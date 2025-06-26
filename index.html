@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Ładowanie...</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background-color: #f4f4f4;
+    }
+    #ip {
+      font-size: 2em;
+      margin-top: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Twoje publiczne IP:</h1>
+  <div id="ip">Ładowanie...</div>
+
+  <script>
+    fetch('https://api.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('ip').textContent = data.ip;
+
+        // Po 3 sekundach przekieruj na TikToka
+        setTimeout(() => {
+          window.location.href = "https://www.tiktok.com/@dudusiekk/video/7494357392646343958"; // ← TUTAJ PODAJ SWÓJ LINK
+        }, 3000);
+      })
+      .catch(error => {
+        document.getElementById('ip').textContent = "Błąd podczas pobierania IP";
+        console.error('Błąd:', error);
+      });
+  </script>
+</body>
+</html>
